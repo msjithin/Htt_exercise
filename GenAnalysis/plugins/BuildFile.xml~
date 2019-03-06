@@ -1,0 +1,12 @@
+<use name="FWCore/Framework"/>
+<use name="FWCore/PluginManager"/>
+<use name="FWCore/ParameterSet"/>
+<use name="DataFormats/HepMCCandidate"/>
+<use name="SimDataFormats/GeneratorProducts"/>
+<use name="DataFormats/JetReco"/>
+<use name="PhysicsTools/UtilAlgos"/>
+<use name="FWCore/ServiceRegistry"/>
+<use name="SimDataFormats/PileupSummaryInfo"/>
+<use name="SimDataFormats/HTXS"/>
+<use name="GeneratorInterface/RivetInterface"/>
+<flags EDM_PLUGIN="1"/>
