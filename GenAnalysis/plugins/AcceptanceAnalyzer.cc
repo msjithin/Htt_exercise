@@ -57,9 +57,8 @@ class AcceptanceAnalyzer : public edm::one::EDAnalyzer<edm::one::SharedResources
    public:
       explicit AcceptanceAnalyzer(const edm::ParameterSet&);
       ~AcceptanceAnalyzer();
-  //    virtual double AcceptanceAnalyzer::DeltaPhi(double phi1, double phi2);
-      static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
-    const edm::EDGetTokenT<HTXS::HiggsClassification> getRivetInfo();
+       static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
+  
   
 private:
   virtual void beginJob() override;
@@ -293,9 +292,9 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
 	  MuTau_t += 1;
 	  ETau_t += 1;}
         if ( TMath::Abs(tau.eta()) < 2.1 && tau.pt() > 40 ) TauTau_t1 += 1;
-        if ( TMath::Abs(tau.eta()) < 2.1 && tau.pt() > 30 ) TauTau_t2 += 1;	
-	}
-
+        if ( TMath::Abs(tau.eta()) < 2.1 && tau.pt() > 30 ) TauTau_t2 += 1;   
+    }
+    
     if ( pts.size() > 0 ) tauPt1 = pts.at(0);
     if ( pts.size() > 1 ) tauPt2 = pts.at(1);
     if ( pts.size() > 2 ) tauPt3 = pts.at(2);
@@ -434,14 +433,14 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
 	hTau_1_phi = hTau_phis.at(0);
 	hTau_2_phi = hTau_phis.at(1);
       }
-    std::cout << "tau etas  " << hTau_1_eta << " and "<< hTau_2_eta << std::endl;
-    std::cout << "tau phis  " << hTau_1_phi << " and "<< hTau_2_phi << std::endl;
-
+    //std::cout << "tau etas  " << hTau_1_eta << " and "<< hTau_2_eta << std::endl;
+    //std::cout << "tau phis  " << hTau_1_phi << " and "<< hTau_2_phi << std::endl;
+    
     if (TauTauPass ==1) { ////////// change this
       //for (const reco::GenJet &tau : *hTaus) {
       if (!(hTau_1_eta==0 && hTau_2_eta==0 && hTau_1_phi==0 && hTau_2_phi==0))
 	{
-      DeltaR3.push_back(deltaR(hTau_1_eta, hTau_1_phi,hTau_2_eta,hTau_2_phi ));
+	  DeltaR3.push_back(deltaR(hTau_1_eta, hTau_1_phi,hTau_2_eta,hTau_2_phi ));
 	}
     }
 
@@ -501,11 +500,6 @@ Double_t AcceptanceAnalyzer::deltaR(Double_t eta1, Double_t phi1, Double_t eta2,
   return sqrt(dEta*dEta+dPhi*dPhi);
 }
 
-
-const edm::EDGetTokenT<HTXS::HiggsClassification> AcceptanceAnalyzer::getRivetInfo(){
-  const edm::EDGetTokenT<HTXS::HiggsClassification> htxsRivetInfo_;
-  return htxsRivetInfo_;
-}
 
 // ------------ method fills 'descriptions' with the allowed parameters for the module  ------------
 void
