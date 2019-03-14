@@ -5,7 +5,7 @@ process = cms.Process("Demo")
 process.load("FWCore.MessageService.MessageLogger_cfi")
 process.load("SimGeneral.HepPDTESSource.pythiapdt_cfi")
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(10000) )
 process.MessageLogger.cerr.FwkReport.reportEvery = cms.untracked.int32(1000)
 
 process.source = cms.Source("PoolSource",
@@ -18,9 +18,9 @@ process.source = cms.Source("PoolSource",
         #'file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/PU2017RECOSIMstep_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/70000/DA1BE8CB-5444-E811-BDBF-0025905A48FC.root',
         
         #'file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/PU2017RECOSIMstep_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/70000/0C335F78-5644-E811-B6E5-0CC47A7452DA.root',
-        'file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/90000/D84ED2D3-5B42-E811-B73B-0CC47A745294.root',
-        #'file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/90000/FE4D4DD9-5B42-E811-A066-0CC47A4D76B6.root'
-
+#        'file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/90000/D84ED2D3-5B42-E811-B73B-0CC47A745294.root',
+#        'file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/90000/FE4D4DD9-5B42-E811-A066-0CC47A4D76B6.root',
+        'file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/DCCA61BA-2B21-E911-94C7-44A842CFD667.root'
 
     )
 )

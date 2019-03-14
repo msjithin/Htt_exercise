@@ -67,25 +67,37 @@ private:
   Double_t deltaPhi(Double_t phi1, Double_t phi2);
   Double_t deltaR(Double_t eta1, Double_t phi1, Double_t eta2, Double_t phi2);
   
-      // ----------member data ---------------------------
-      edm::EDGetTokenT<std::vector<reco::GenJet>> genHadronicTausToken_;
-      edm::EDGetTokenT<std::vector<reco::GenJet>> genElectronicTausToken_;
-      edm::EDGetTokenT<std::vector<reco::GenJet>> genMuonicTausToken_;
-      edm::EDGetTokenT<std::vector<PileupSummaryInfo>> puToken_;
-      edm::EDGetTokenT<HTXS::HiggsClassification> htxsToken_;
-      edm::EDGetTokenT<LHEEventProduct> lheToken_;
-      TTree *tree;
-      float genMass, ETauPass, MuTauPass, EMuPass, TauTauPass, TauTau4030Pass, MuMuPass;
-      float ETauD, MuTauD, EMuD, TauTauD, MuMuD;
-      float threeLeptons, nLooseTaus, nLooseElec, nLooseMu;
-      float nTruePU, tauPt1, tauPt2, tauPt3;
-      float tauEta1, tauEta2, tauEta3;
-      float tauPhi1, tauPhi2, tauPhi3;
-      float d_phi, d_eta;
-      float deltaR1, deltaR2, deltaR3, deltaR4;
-      float run, lumi;
-      double eventD;
-      float higgsPt;
+  // ----------member data ---------------------------
+  edm::EDGetTokenT<std::vector<reco::GenJet>> genHadronicTausToken_;
+  edm::EDGetTokenT<std::vector<reco::GenJet>> genElectronicTausToken_;
+  edm::EDGetTokenT<std::vector<reco::GenJet>> genMuonicTausToken_;
+  edm::EDGetTokenT<std::vector<PileupSummaryInfo>> puToken_;
+  edm::EDGetTokenT<HTXS::HiggsClassification> htxsToken_;
+  edm::EDGetTokenT<LHEEventProduct> lheToken_;
+  TTree *tree;
+  float genMass, ETauPass, MuTauPass, EMuPass, TauTauPass, TauTau4030Pass, MuMuPass;
+  float ETauD, MuTauD, EMuD, TauTauD, MuMuD;
+  float threeLeptons, nLooseTaus, nLooseElec, nLooseMu;
+  float nTruePU, tauPt1, tauPt2, tauPt3;
+  float tauEta1, tauEta2, tauEta3;
+  float tauPhi1, tauPhi2, tauPhi3;
+  float d_phi, d_eta;
+  float deltaR_et, deltaR_mt, deltaR_tt, deltaR_em;
+  float deltaR_et_1, deltaR_et_2, deltaR_et_3;
+  float deltaR_mt_1, deltaR_mt_2, deltaR_mt_3;
+  float deltaR_tt_1, deltaR_tt_2, deltaR_tt_3;
+  float deltaR_em_1, deltaR_em_2, deltaR_em_3;
+  
+  float run, lumi;
+  double eventD;
+  float higgsPt;
+  
+  float higgsPt_et, higgsPt_mt, higgsPt_tt, higgsPt_em;
+  float higgsPt_et_1, higgsPt_et_2, higgsPt_et_3;
+  float higgsPt_mt_1, higgsPt_mt_2, higgsPt_mt_3;
+  float higgsPt_tt_1, higgsPt_tt_2, higgsPt_tt_3;
+  float higgsPt_em_1, higgsPt_em_2, higgsPt_em_3;
+
   Int_t nTau , hTau_1, hTau_2;
 
 
@@ -149,11 +161,41 @@ AcceptanceAnalyzer::AcceptanceAnalyzer(const edm::ParameterSet& iConfig) :
    tree->Branch("d_eta",&d_eta,"d_eta/F");
    tree->Branch("higgsPt",&higgsPt,"higgsPt/F");
 
-   tree->Branch("deltaR1",&deltaR1,"deltaR1/F");
-   tree->Branch("deltaR2",&deltaR2,"deltaR2/F");
-   tree->Branch("deltaR3",&deltaR3,"deltaR3/F");
-   tree->Branch("deltaR4",&deltaR4,"deltaR4/F");
-  
+   tree->Branch("deltaR_et",&deltaR_et,"deltaR_et/F");
+   tree->Branch("deltaR_et_1",&deltaR_et_1,"deltaR_et_1/F");
+   tree->Branch("deltaR_et_2",&deltaR_et_2,"deltaR_et_2/F");
+   tree->Branch("deltaR_et_3",&deltaR_et_3,"deltaR_et_3/F");
+   tree->Branch("deltaR_mt",&deltaR_mt,"deltaR_mt/F");
+   tree->Branch("deltaR_mt_1",&deltaR_mt_1,"deltaR_mt_1/F");
+   tree->Branch("deltaR_mt_2",&deltaR_mt_2,"deltaR_mt_2/F");
+   tree->Branch("deltaR_mt_3",&deltaR_mt_3,"deltaR_mt_3/F");
+   tree->Branch("deltaR_tt",&deltaR_tt,"deltaR_tt/F");
+   tree->Branch("deltaR_tt_1",&deltaR_tt_1,"deltaR_tt_1/F");
+   tree->Branch("deltaR_tt_2",&deltaR_tt_2,"deltaR_tt_2/F");
+   tree->Branch("deltaR_tt_3",&deltaR_tt_3,"deltaR_tt_3/F");
+   tree->Branch("deltaR_em",&deltaR_em,"deltaR_em/F");
+   tree->Branch("deltaR_em_1",&deltaR_em_1,"deltaR_em_1/F");
+   tree->Branch("deltaR_em_2",&deltaR_em_2,"deltaR_em_2/F");
+   tree->Branch("deltaR_em_3",&deltaR_em_3,"deltaR_em_3/F");
+
+   tree->Branch("higgsPt",&higgsPt,"higgsPt/F");
+   tree->Branch("higgsPt_et",&higgsPt_et,"higgsPt_et/F");
+   tree->Branch("higgsPt_et_1",&higgsPt_et_1,"higgsPt_et_1/F");
+   tree->Branch("higgsPt_et_2",&higgsPt_et_2,"higgsPt_et_2/F");
+   tree->Branch("higgsPt_et_3",&higgsPt_et_3,"higgsPt_et_3/F");
+
+   tree->Branch("higgsPt_mt",&higgsPt_mt,"higgsPt_mt/F");
+   tree->Branch("higgsPt_mt_1",&higgsPt_mt_1,"higgsPt_mt_1/F");
+   tree->Branch("higgsPt_mt_2",&higgsPt_mt_2,"higgsPt_mt_2/F");
+   tree->Branch("higgsPt_mt_3",&higgsPt_mt_3,"higgsPt_mt_3/F");
+   tree->Branch("higgsPt_tt",&higgsPt_tt,"higgsPt_tt/F");
+   tree->Branch("higgsPt_tt_1",&higgsPt_tt_1,"higgsPt_tt_1/F");
+   tree->Branch("higgsPt_tt_2",&higgsPt_tt_2,"higgsPt_tt_2/F");
+   tree->Branch("higgsPt_tt_3",&higgsPt_tt_3,"higgsPt_tt_3/F");
+   tree->Branch("higgsPt_em",&higgsPt_em,"higgsPt_em/F");
+   tree->Branch("higgsPt_em_1",&higgsPt_em_1,"higgsPt_em_1/F");
+   tree->Branch("higgsPt_em_2",&higgsPt_em_2,"higgsPt_em_2/F");
+   tree->Branch("higgsPt_em_3",&higgsPt_em_3,"higgsPt_em_3/F");
 
    tree->Branch("nTau",&nTau);
 
@@ -188,10 +230,29 @@ AcceptanceAnalyzer::AcceptanceAnalyzer(const edm::ParameterSet& iConfig) :
     tauPhi3 = -10.0;
     d_phi = -10.0;
     d_eta = -10.0;
-    deltaR1 = -1.0;
-    deltaR2 = -1.0;
-    deltaR3 = -1.0;
-    deltaR4 = -1.0;
+    deltaR_et = -1.0;
+    deltaR_mt = -1.0;
+    deltaR_tt = -1.0;
+    deltaR_em = -1.0;
+    deltaR_et_1 = -1.0;
+    deltaR_et_2 = -1.0;
+    deltaR_et_3 = -1.0;
+    deltaR_mt_1 = -1.0;
+    deltaR_mt_2 = -1.0;
+    deltaR_mt_3 = -1.0;
+    deltaR_tt_1 = -1.0;
+    deltaR_tt_2 = -1.0;
+    deltaR_tt_3 = -1.0;
+    deltaR_em_1 = -1.0;
+    deltaR_em_2 = -1.0;
+    deltaR_em_3 = -1.0;
+    higgsPt_et = higgsPt_et_1 = higgsPt_et_2 =higgsPt_et_3 = -1.0;
+    higgsPt_mt = higgsPt_mt_1 = higgsPt_mt_2 =higgsPt_mt_3 = -1.0;
+    higgsPt_tt = higgsPt_tt_1 = higgsPt_tt_2 =higgsPt_tt_3 = -1.0;
+    higgsPt_em = higgsPt_em_1 = higgsPt_em_2 =higgsPt_em_3 = -1.0;
+
+
+
     higgsPt = -1.0;
     nTau =hTau_1= hTau_2=-1.0;
 
@@ -392,6 +453,7 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
       for (const reco::GenJet &tau : *hTaus) {
 	for (const reco::GenJet &ele : *eTaus) {
 	  DeltaR1.push_back(deltaR(ele.eta(), ele.phi(), tau.eta(), tau.phi() ));
+	  
 	}
       }
     }
@@ -446,10 +508,10 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
 
     
     
-    if (DeltaR1.size() >0 )deltaR1=DeltaR1.at(0);
-    if (DeltaR2.size() >0 )deltaR2=DeltaR2.at(0);
-    if (DeltaR3.size() >0 )deltaR3=DeltaR3.at(0);
-    if (DeltaR4.size() >0 )deltaR4=DeltaR4.at(0);
+    if (DeltaR1.size() >0 )deltaR_et=DeltaR1.at(0);
+    if (DeltaR2.size() >0 )deltaR_mt=DeltaR2.at(0);
+    if (DeltaR3.size() >0 )deltaR_tt=DeltaR3.at(0);
+    if (DeltaR4.size() >0 )deltaR_em=DeltaR4.at(0);
 
     //LogInfo("Demo") << "number of gen taus "<<nGenTaus;
     //std::cout << genTaus << std::endl;
