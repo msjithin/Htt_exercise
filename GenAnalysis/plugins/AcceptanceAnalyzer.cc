@@ -75,30 +75,76 @@ private:
   edm::EDGetTokenT<HTXS::HiggsClassification> htxsToken_;
   edm::EDGetTokenT<LHEEventProduct> lheToken_;
   TTree *tree;
-  float genMass, ETauPass, MuTauPass, EMuPass, TauTauPass, TauTau4030Pass, MuMuPass;
-  float ETauD, MuTauD, EMuD, TauTauD, MuMuD;
-  float threeLeptons, nLooseTaus, nLooseElec, nLooseMu;
-  float nTruePU, tauPt1, tauPt2, tauPt3;
-  float tauEta1, tauEta2, tauEta3;
-  float tauPhi1, tauPhi2, tauPhi3;
-  float d_phi, d_eta;
-  float deltaR_et, deltaR_mt, deltaR_tt, deltaR_em;
-  float deltaR_et_1, deltaR_et_2, deltaR_et_3;
-  float deltaR_mt_1, deltaR_mt_2, deltaR_mt_3;
-  float deltaR_tt_1, deltaR_tt_2, deltaR_tt_3;
-  float deltaR_em_1, deltaR_em_2, deltaR_em_3;
+  float genMass = 0.0;
+  float ETauPass = 0.0;
+  float MuTauPass = 0.0;
+  float EMuPass = 0.0;
+  float TauTauPass =0.0; 
+  float TauTau4030Pass=  0.0;
+  float MuMuPass = 0.0;
+  float ETauD= 0.0;
+  float MuTauD= 0.0;
+  float EMuD= 0;
+  float TauTauD= 0;
+  float MuMuD =0.0;
+  float threeLeptons= 0;
+  float nLooseTaus= 0;
+  float nLooseElec= 0;
+  float nLooseMu=0.0;
+  float nTruePU= 0;
+  float tauPt1= 0.0;
+  float tauPt2= 0.0;
+  float tauPt3=0.0;
+  float tauEta1= 0.0;
+  float tauEta2= 0.0;
+  float tauEta3=0.0;
+  float tauPhi1= 0.0;
+  float tauPhi2= 0.0;
+  float tauPhi3=0.0;
+  float d_phi= 0.0;
+  float d_eta=0.0;
+  float deltaR_et = 0.0;
+  float deltaR_mt = 0.0; 
+  float deltaR_tt = 0.0;
+  float deltaR_em = 0.0;
+  float deltaR_et_1 = 0.0;
+  float deltaR_et_2 = 0.0;
+  float deltaR_et_3 = 0.0;
+  float deltaR_mt_1 = 0.0;
+  float deltaR_mt_2 = 0.0;
+  float deltaR_mt_3 = 0.0;
+  float deltaR_tt_1 = 0.0;
+  float deltaR_tt_2 = 0.0;
+  float deltaR_tt_3 = 0.0;
+  float deltaR_em_1 = 0.0;
+  float deltaR_em_2 = 0.0;
+  float deltaR_em_3 = 0.0;
   
-  float run, lumi;
-  double eventD;
-  float higgsPt;
+  float run= 0.0;
+  float lumi=0.0;
+  double eventD=0.0;
+  float higgsPt=0.0;
   
-  float higgsPt_et, higgsPt_mt, higgsPt_tt, higgsPt_em;
-  float higgsPt_et_1, higgsPt_et_2, higgsPt_et_3;
-  float higgsPt_mt_1, higgsPt_mt_2, higgsPt_mt_3;
-  float higgsPt_tt_1, higgsPt_tt_2, higgsPt_tt_3;
-  float higgsPt_em_1, higgsPt_em_2, higgsPt_em_3;
-
-  Int_t nTau , hTau_1, hTau_2;
+  float higgsPt_et = 0.0;
+  float higgsPt_mt = 0.0;
+  float higgsPt_tt = 0.0;
+  float higgsPt_em = 0.0;
+  float higgsPt_et_1 = 0.0;
+  float higgsPt_et_2 = 0.0;
+  float higgsPt_et_3 = 0.0;
+  float higgsPt_mt_1 =0.0; 
+  float   higgsPt_mt_2 = 0.0;
+  float higgsPt_mt_3 = 0.0;
+  float higgsPt_tt_1 = 0.0;
+  float   higgsPt_tt_2 = 0.0;
+  float higgsPt_tt_3 = 0.0;
+  float higgsPt_em_1 = 0.0;
+  float   higgsPt_em_2 = 0.0;
+  float higgsPt_em_3 = 0.0;
+  
+  Int_t nTau = 0;
+  Int_t hTau_1= 0;
+  Int_t hTau_2=0;
 
 
 };
@@ -199,7 +245,7 @@ AcceptanceAnalyzer::AcceptanceAnalyzer(const edm::ParameterSet& iConfig) :
 
    tree->Branch("nTau",&nTau);
 
-   run = -1.0;
+   /*   run = -1.0;
    lumi = -1.0;
     eventD = -1.0;
     genMass = -1.0;
@@ -230,7 +276,8 @@ AcceptanceAnalyzer::AcceptanceAnalyzer(const edm::ParameterSet& iConfig) :
     tauPhi3 = -10.0;
     d_phi = -10.0;
     d_eta = -10.0;
-    deltaR_et = -1.0;
+
+    //deltaR_et = -1.0;
     deltaR_mt = -1.0;
     deltaR_tt = -1.0;
     deltaR_em = -1.0;
@@ -255,7 +302,7 @@ AcceptanceAnalyzer::AcceptanceAnalyzer(const edm::ParameterSet& iConfig) :
 
     higgsPt = -1.0;
     nTau =hTau_1= hTau_2=-1.0;
-
+   */
 }
 
 
