@@ -301,6 +301,32 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
      {
        //std::cout << "Rivet info higgs pt " << htxs->higgs.pt() << std::endl;
 	higgsPt = htxs->higgs.pt();
+	if (ETauPass ==1){
+	  higgsPt_et = htxs->higgs.pt();
+	  if(htxs->higgs.pt() > 150) { higgsPt_et_1 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 200) { higgsPt_et_2 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 250) { higgsPt_et_3 = htxs->higgs.pt(); }
+	}
+        if (MuTauPass ==1){
+          higgsPt_mt = htxs->higgs.pt();
+	  if(htxs->higgs.pt() > 150) { higgsPt_mt_1 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 200) { higgsPt_mt_2 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 250) { higgsPt_mt_3 = htxs->higgs.pt(); }
+	}
+        if (TauTauPass ==1){
+          higgsPt_tt = htxs->higgs.pt();
+          if(htxs->higgs.pt() > 150) { higgsPt_tt_1 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 200) { higgsPt_tt_2 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 250) { higgsPt_tt_3 = htxs->higgs.pt(); }
+        }
+        if (EMuPass ==1){
+          higgsPt_em = htxs->higgs.pt();
+          if(htxs->higgs.pt() > 150) { higgsPt_em_1 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 200) { higgsPt_em_2 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 250) { higgsPt_em_3 = htxs->higgs.pt(); }
+
+        }
+
       }
 
 
@@ -453,10 +479,16 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
       for (const reco::GenJet &tau : *hTaus) {
 	for (const reco::GenJet &ele : *eTaus) {
 	  DeltaR1.push_back(deltaR(ele.eta(), ele.phi(), tau.eta(), tau.phi() ));
-	  
 	}
       }
     }
+    if (DeltaR1.size() >0 ){
+      deltaR_et=DeltaR1.at(0);
+      if (DeltaR1.at(0) < 2.0){  deltaR_et_1=DeltaR1.at(0);  }
+      if (DeltaR1.at(0) < 1.0){  deltaR_et_2=DeltaR1.at(0);  }
+      if (DeltaR1.at(0) < 0.5){  deltaR_et_3=DeltaR1.at(0);  }
+    }
+
     if (MuTauPass == 1){
       for (const reco::GenJet &tau : *hTaus) {
 	for (const reco::GenJet &mu : *mTaus) {
@@ -464,12 +496,25 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
 	}
       }
     }
+    if (DeltaR2.size() >0 ){
+      deltaR_mt=DeltaR2.at(0);
+      if (DeltaR2.at(0) < 2.0){  deltaR_mt_1=DeltaR2.at(0);  }
+      if (DeltaR2.at(0) < 1.0){  deltaR_mt_2=DeltaR2.at(0);  }
+      if (DeltaR2.at(0) < 0.5){  deltaR_mt_3=DeltaR2.at(0);  }
+    }
+
     if (EMuPass==1){
       for (const reco::GenJet &ele : *eTaus) {
 	for (const reco::GenJet &mu : *mTaus) {
 	  DeltaR4.push_back(deltaR(ele.eta(), ele.phi(), mu.eta(), mu.phi() ));
 	}
       }
+    }
+    if (DeltaR4.size() >0 ){
+      deltaR_em=DeltaR4.at(0);
+      if (DeltaR4.at(0) < 2.0){  deltaR_em_1=DeltaR4.at(0);  }
+      if (DeltaR4.at(0) < 1.0){  deltaR_em_2=DeltaR4.at(0);  }
+      if (DeltaR4.at(0) < 0.5){  deltaR_em_3=DeltaR4.at(0);  }
     }
 
     std::vector< float > tauCand;
@@ -505,14 +550,14 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
 	  DeltaR3.push_back(deltaR(hTau_1_eta, hTau_1_phi,hTau_2_eta,hTau_2_phi ));
 	}
     }
+    if (DeltaR3.size() >0 ){
+      deltaR_tt=DeltaR3.at(0);
+      if (DeltaR3.at(0) < 0.5){  deltaR_tt_1=DeltaR3.at(0);  }
+      if (DeltaR3.at(0) < 0.3){  deltaR_tt_2=DeltaR3.at(0);  }
+      if (DeltaR3.at(0) < 0.1){  deltaR_tt_3=DeltaR3.at(0);  }
+    }
 
     
-    
-    if (DeltaR1.size() >0 )deltaR_et=DeltaR1.at(0);
-    if (DeltaR2.size() >0 )deltaR_mt=DeltaR2.at(0);
-    if (DeltaR3.size() >0 )deltaR_tt=DeltaR3.at(0);
-    if (DeltaR4.size() >0 )deltaR_em=DeltaR4.at(0);
-
     //LogInfo("Demo") << "number of gen taus "<<nGenTaus;
     //std::cout << genTaus << std::endl;
 
