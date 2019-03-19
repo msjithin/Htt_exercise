@@ -54,10 +54,10 @@
 // This will improve performance in multithreaded jobs.
 
 class AcceptanceAnalyzer : public edm::one::EDAnalyzer<edm::one::SharedResources>  {
-   public:
-      explicit AcceptanceAnalyzer(const edm::ParameterSet&);
-      ~AcceptanceAnalyzer();
-       static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
+public:
+  explicit AcceptanceAnalyzer(const edm::ParameterSet&);
+  ~AcceptanceAnalyzer();
+  static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
   
   
 private:
@@ -75,77 +75,56 @@ private:
   edm::EDGetTokenT<HTXS::HiggsClassification> htxsToken_;
   edm::EDGetTokenT<LHEEventProduct> lheToken_;
   TTree *tree;
-  float genMass = 0.0;
-  float ETauPass = 0.0;
-  float MuTauPass = 0.0;
-  float EMuPass = 0.0;
-  float TauTauPass =0.0; 
-  float TauTau4030Pass=  0.0;
-  float MuMuPass = 0.0;
-  float ETauD= 0.0;
-  float MuTauD= 0.0;
-  float EMuD= 0;
-  float TauTauD= 0;
-  float MuMuD =0.0;
-  float threeLeptons= 0;
-  float nLooseTaus= 0;
-  float nLooseElec= 0;
-  float nLooseMu=0.0;
-  float nTruePU= 0;
-  float tauPt1= 0.0;
-  float tauPt2= 0.0;
-  float tauPt3=0.0;
-  float tauEta1= 0.0;
-  float tauEta2= 0.0;
-  float tauEta3=0.0;
-  float tauPhi1= 0.0;
-  float tauPhi2= 0.0;
-  float tauPhi3=0.0;
-  float d_phi= 0.0;
-  float d_eta=0.0;
-  float deltaR_et = 0.0;
-  float deltaR_mt = 0.0; 
-  float deltaR_tt = 0.0;
-  float deltaR_em = 0.0;
-  float deltaR_et_1 = 0.0;
-  float deltaR_et_2 = 0.0;
-  float deltaR_et_3 = 0.0;
-  float deltaR_mt_1 = 0.0;
-  float deltaR_mt_2 = 0.0;
-  float deltaR_mt_3 = 0.0;
-  float deltaR_tt_1 = 0.0;
-  float deltaR_tt_2 = 0.0;
-  float deltaR_tt_3 = 0.0;
-  float deltaR_em_1 = 0.0;
-  float deltaR_em_2 = 0.0;
-  float deltaR_em_3 = 0.0;
+  float genMass ;
+  float ETauPass , MuTauPass, EMuPass, TauTauPass, TauTau4030Pass, MuMuPass;
+  float ETauD, MuTauD, EMuD, TauTauD, MuMuD;
+  float threeLeptons, nLooseTaus, nLooseElec, nLooseMu;
+  float nTruePU;
+  float tauPt1, tauPt2, tauPt3, tauEta1, tauEta2, tauEta3, tauPhi1, tauPhi2, tauPhi3;
+  float d_phi, d_eta;
+  float deltaR_et;
+  float deltaR_mt; 
+  float deltaR_tt;
+  float deltaR_em;
+  float deltaR_et_1;
+  float deltaR_et_2;
+  float deltaR_et_3;
+  float deltaR_mt_1;
+  float deltaR_mt_2;
+  float deltaR_mt_3;
+  float deltaR_tt_1;
+  float deltaR_tt_2;
+  float deltaR_tt_3;
+  float deltaR_em_1;
+  float deltaR_em_2;
+  float deltaR_em_3;
   
-  float run= 0.0;
-  float lumi=0.0;
-  double eventD=0.0;
-  float higgsPt=0.0;
+  float run;
+  float lumi;
+  double eventD;
+  float higgsPt;
   
-  float higgsPt_et = 0.0;
-  float higgsPt_mt = 0.0;
-  float higgsPt_tt = 0.0;
-  float higgsPt_em = 0.0;
-  float higgsPt_et_1 = 0.0;
-  float higgsPt_et_2 = 0.0;
-  float higgsPt_et_3 = 0.0;
-  float higgsPt_mt_1 =0.0; 
-  float   higgsPt_mt_2 = 0.0;
-  float higgsPt_mt_3 = 0.0;
-  float higgsPt_tt_1 = 0.0;
-  float   higgsPt_tt_2 = 0.0;
-  float higgsPt_tt_3 = 0.0;
-  float higgsPt_em_1 = 0.0;
-  float   higgsPt_em_2 = 0.0;
-  float higgsPt_em_3 = 0.0;
+  float higgsPt_et;
+  float higgsPt_mt;
+  float higgsPt_tt;
+  float higgsPt_em;
+  float higgsPt_et_1;
+  float higgsPt_et_2;
+  float higgsPt_et_3;
+  float higgsPt_mt_1; 
+  float   higgsPt_mt_2;
+  float higgsPt_mt_3;
+  float higgsPt_tt_1;
+  float   higgsPt_tt_2;
+  float higgsPt_tt_3;
+  float higgsPt_em_1;
+  float   higgsPt_em_2;
+  float higgsPt_em_3;
   
-  Int_t nTau = 0;
-  Int_t hTau_1= 0;
-  Int_t hTau_2=0;
-
+  Int_t nTau;
+  Int_t hTau_1;
+  Int_t hTau_2;
+  Int_t nJets;
 
 };
 
@@ -164,6 +143,8 @@ AcceptanceAnalyzer::AcceptanceAnalyzer(const edm::ParameterSet& iConfig) :
     genHadronicTausToken_(consumes<std::vector<reco::GenJet>>(iConfig.getParameter<edm::InputTag>("hadronSrc"))),
     genElectronicTausToken_(consumes<std::vector<reco::GenJet>>(iConfig.getParameter<edm::InputTag>("electronSrc"))),
     genMuonicTausToken_(consumes<std::vector<reco::GenJet>>(iConfig.getParameter<edm::InputTag>("muonSrc"))),
+    //    genJetToken_(consumes<std::vector<reco::GenJet>>(iConfig.getParameter<edm::InputTag>("genJetSrc"))),
+
     puToken_(consumes<std::vector<PileupSummaryInfo>>(iConfig.getParameter<edm::InputTag>("puSrc"))),
     htxsToken_(consumes<HTXS::HiggsClassification>(edm::InputTag("rivetProducerHTXS","HiggsClassification"))),
     lheToken_(consumes<LHEEventProduct>(iConfig.getParameter<edm::InputTag>("lheSrc")))
@@ -244,64 +225,79 @@ AcceptanceAnalyzer::AcceptanceAnalyzer(const edm::ParameterSet& iConfig) :
    tree->Branch("higgsPt_em_3",&higgsPt_em_3,"higgsPt_em_3/F");
 
    tree->Branch("nTau",&nTau);
+   tree->Branch("nJets",&nJets);
 
-   /*   run = -1.0;
-   lumi = -1.0;
-    eventD = -1.0;
-    genMass = -1.0;
-    ETauPass = 0;
-    MuTauPass = 0;
-    EMuPass = 0;
-    TauTauPass = 0;
-    TauTau4030Pass = 0;
-    MuMuPass = 0;
-    ETauD = 0;
-    MuTauD = 0;
-    EMuD = 0;
-    TauTauD = 0;
-    MuMuD = 0;
-    threeLeptons = 0;
-    nLooseTaus = 0;
-    nLooseElec = 0;
-    nLooseMu = 0;
-    nTruePU = -1.0;
-    tauPt1 = -1.0;
-    tauPt2 = -1.0;
-    tauPt3 = -1.0;
-    tauEta1 = -10.0;
-    tauEta2 = -10.0;
-    tauEta3 = -10.0;
-    tauPhi1 = -10.0;
-    tauPhi2 = -10.0;
-    tauPhi3 = -10.0;
-    d_phi = -10.0;
-    d_eta = -10.0;
-
-    //deltaR_et = -1.0;
-    deltaR_mt = -1.0;
-    deltaR_tt = -1.0;
-    deltaR_em = -1.0;
-    deltaR_et_1 = -1.0;
-    deltaR_et_2 = -1.0;
-    deltaR_et_3 = -1.0;
-    deltaR_mt_1 = -1.0;
-    deltaR_mt_2 = -1.0;
-    deltaR_mt_3 = -1.0;
-    deltaR_tt_1 = -1.0;
-    deltaR_tt_2 = -1.0;
-    deltaR_tt_3 = -1.0;
-    deltaR_em_1 = -1.0;
-    deltaR_em_2 = -1.0;
-    deltaR_em_3 = -1.0;
-    higgsPt_et = higgsPt_et_1 = higgsPt_et_2 =higgsPt_et_3 = -1.0;
-    higgsPt_mt = higgsPt_mt_1 = higgsPt_mt_2 =higgsPt_mt_3 = -1.0;
-    higgsPt_tt = higgsPt_tt_1 = higgsPt_tt_2 =higgsPt_tt_3 = -1.0;
-    higgsPt_em = higgsPt_em_1 = higgsPt_em_2 =higgsPt_em_3 = -1.0;
-
-
-
-    higgsPt = -1.0;
-    nTau =hTau_1= hTau_2=-1.0;
+   /*
+   genMass = -9.0;
+   ETauPass = -9.0;
+   MuTauPass = -9.0;
+   EMuPass = -9.0;
+   TauTauPass = -9.0; 
+   TauTau4030Pass=  -9.0;
+   MuMuPass = -9.0;
+   ETauD= -9.0;
+   MuTauD= -9.0;
+   EMuD= -9.0;
+   TauTauD= -9.0;
+   MuMuD = -9.0;
+   threeLeptons= -9.0;
+   nLooseTaus= -9.0;
+   nLooseElec= -9.0;
+   nLooseMu= -9.0;
+   nTruePU= -9.0;
+   tauPt1= -9.0;
+   tauPt2= -9.0;
+   tauPt3= -9.0;
+   tauEta1= -9.0;
+   tauEta2= -9.0;
+   tauEta3= -9.0;
+   tauPhi1= -9.0;
+   tauPhi2= -9.0;
+   tauPhi3= -9.0;
+   d_phi= -9.0;
+   d_eta= -9.0;
+   deltaR_et = -9.0;
+   deltaR_mt = -9.0; 
+   deltaR_tt = -9.0;
+   deltaR_em = -9.0;
+   deltaR_et_1 = -9.0;
+   deltaR_et_2 = -9.0;
+   deltaR_et_3 = -9.0;
+   deltaR_mt_1 = -9.0;
+   deltaR_mt_2 = -9.0;
+   deltaR_mt_3 = -9.0;
+   deltaR_tt_1 = -9.0;
+   deltaR_tt_2 = -9.0;
+   deltaR_tt_3 = -9.0;
+   deltaR_em_1 = -9.0;
+   deltaR_em_2 = -9.0;
+   deltaR_em_3 = -9.0;
+  
+   run= -9.0;
+   lumi= -9.0;
+   eventD= -9.0;
+   higgsPt= -9.0;
+  
+   higgsPt_et = -9.0;
+   higgsPt_mt = -9.0;
+   higgsPt_tt = -9.0;
+   higgsPt_em = -9.0;
+   higgsPt_et_1 = -9.0;
+   higgsPt_et_2 = -9.0;
+   higgsPt_et_3 = -9.0;
+   higgsPt_mt_1 = -9.0; 
+   higgsPt_mt_2 = -9.0;
+   higgsPt_mt_3 = -9.0;
+   higgsPt_tt_1 = -9.0;
+   higgsPt_tt_2 = -9.0;
+   higgsPt_tt_3 = -9.0;
+   higgsPt_em_1 = -9.0;
+   higgsPt_em_2 = -9.0;
+   higgsPt_em_3 = -9.0;
+   nTau = -9.0;
+   hTau_1= -9.0;
+   hTau_2= -9.0;
+   nJets = -9.0;
    */
 }
 
@@ -311,7 +307,6 @@ AcceptanceAnalyzer::~AcceptanceAnalyzer()
  
    // do anything here that needs to be done at desctruction time
    // (e.g. close files, deallocate resources etc.)
-
 }
 
 
@@ -330,12 +325,88 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
     iEvent.getByToken(genElectronicTausToken_, eTaus);
     edm::Handle<std::vector<reco::GenJet>> mTaus;   
     iEvent.getByToken(genMuonicTausToken_, mTaus);
+    
+    //    edm::Handle<std::vector<reco::GenJet>> genJets;
+    //    iEvent.getByToken(genJetToken_, genJets);
+
     edm::Handle<std::vector<PileupSummaryInfo>> puInfo;   
     iEvent.getByToken(puToken_, puInfo);
     edm::Handle<HTXS::HiggsClassification> htxs;
     iEvent.getByToken(htxsToken_, htxs);
     edm::Handle<LHEEventProduct> lheProd;   
     iEvent.getByToken(lheToken_, lheProd);
+
+   genMass = -9.0;
+   ETauPass = -9.0;
+   MuTauPass = -9.0;
+   EMuPass = -9.0;
+   TauTauPass = -9.0; 
+   TauTau4030Pass=  -9.0;
+   MuMuPass = -9.0;
+   ETauD= -9.0;
+   MuTauD= -9.0;
+   EMuD= -9.0;
+   TauTauD= -9.0;
+   MuMuD = -9.0;
+   threeLeptons= -9.0;
+   nLooseTaus= -9.0;
+   nLooseElec= -9.0;
+   nLooseMu= -9.0;
+   nTruePU= -9.0;
+   tauPt1= -9.0;
+   tauPt2= -9.0;
+   tauPt3= -9.0;
+   tauEta1= -9.0;
+   tauEta2= -9.0;
+   tauEta3= -9.0;
+   tauPhi1= -9.0;
+   tauPhi2= -9.0;
+   tauPhi3= -9.0;
+   d_phi= -9.0;
+   d_eta= -9.0;
+   deltaR_et = -9.0;
+   deltaR_mt = -9.0; 
+   deltaR_tt = -9.0;
+   deltaR_em = -9.0;
+   deltaR_et_1 = -9.0;
+   deltaR_et_2 = -9.0;
+   deltaR_et_3 = -9.0;
+   deltaR_mt_1 = -9.0;
+   deltaR_mt_2 = -9.0;
+   deltaR_mt_3 = -9.0;
+   deltaR_tt_1 = -9.0;
+   deltaR_tt_2 = -9.0;
+   deltaR_tt_3 = -9.0;
+   deltaR_em_1 = -9.0;
+   deltaR_em_2 = -9.0;
+   deltaR_em_3 = -9.0;
+  
+   run= -9.0;
+   lumi= -9.0;
+   eventD= -9.0;
+   higgsPt= -9.0;
+  
+   higgsPt_et = -9.0;
+   higgsPt_mt = -9.0;
+   higgsPt_tt = -9.0;
+   higgsPt_em = -9.0;
+   higgsPt_et_1 = -9.0;
+   higgsPt_et_2 = -9.0;
+   higgsPt_et_3 = -9.0;
+   higgsPt_mt_1 = -9.0; 
+   higgsPt_mt_2 = -9.0;
+   higgsPt_mt_3 = -9.0;
+   higgsPt_tt_1 = -9.0;
+   higgsPt_tt_2 = -9.0;
+   higgsPt_tt_3 = -9.0;
+   higgsPt_em_1 = -9.0;
+   higgsPt_em_2 = -9.0;
+   higgsPt_em_3 = -9.0;
+   nTau = -9.0;
+   hTau_1= -9.0;
+   hTau_2= -9.0;
+   nJets = -9.0;
+
 
     //std::cout << iEvent.eventAuxiliary().event() << std::endl;
     run = iEvent.eventAuxiliary().run();
@@ -345,8 +416,9 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
  
     iEvent.getByToken(htxsToken_,htxs);
     if (htxs.isValid())
-     {
+      {
        //std::cout << "Rivet info higgs pt " << htxs->higgs.pt() << std::endl;
+	//nJets = htxs->jets25;
 	higgsPt = htxs->higgs.pt();
 	if (ETauPass ==1){
 	  higgsPt_et = htxs->higgs.pt();
@@ -627,12 +699,14 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
 void 
 AcceptanceAnalyzer::beginJob()
 {
+
 }
 
 // ------------ method called once each job just after ending the event loop  ------------
 void 
 AcceptanceAnalyzer::endJob() 
 {
+
 }
 
 
