@@ -82,6 +82,8 @@ private:
   float nTruePU;
   float tauPt1, tauPt2, tauPt3, tauEta1, tauEta2, tauEta3, tauPhi1, tauPhi2, tauPhi3;
   float d_phi, d_eta;
+
+  float deltaR_inc;
   float deltaR_et;
   float deltaR_mt; 
   float deltaR_tt;
@@ -102,8 +104,8 @@ private:
   float run;
   float lumi;
   double eventD;
-  float higgsPt;
-  
+
+  float higgsPt;  
   float higgsPt_et;
   float higgsPt_mt;
   float higgsPt_tt;
@@ -112,20 +114,21 @@ private:
   float higgsPt_et_2;
   float higgsPt_et_3;
   float higgsPt_mt_1; 
-  float   higgsPt_mt_2;
+  float higgsPt_mt_2;
   float higgsPt_mt_3;
   float higgsPt_tt_1;
-  float   higgsPt_tt_2;
+  float higgsPt_tt_2;
   float higgsPt_tt_3;
   float higgsPt_em_1;
-  float   higgsPt_em_2;
+  float higgsPt_em_2;
   float higgsPt_em_3;
   
   Int_t nTau;
+  Int_t nMuTau, nETau, nHTau, nEMu;
   Int_t hTau_1;
   Int_t hTau_2;
   Int_t nJets;
-
+  
 };
 
 //
@@ -188,6 +191,7 @@ AcceptanceAnalyzer::AcceptanceAnalyzer(const edm::ParameterSet& iConfig) :
    tree->Branch("d_eta",&d_eta,"d_eta/F");
    tree->Branch("higgsPt",&higgsPt,"higgsPt/F");
 
+   tree->Branch("deltaR_inc",&deltaR_inc,"deltaR_inc/F");
    tree->Branch("deltaR_et",&deltaR_et,"deltaR_et/F");
    tree->Branch("deltaR_et_1",&deltaR_et_1,"deltaR_et_1/F");
    tree->Branch("deltaR_et_2",&deltaR_et_2,"deltaR_et_2/F");
@@ -226,6 +230,10 @@ AcceptanceAnalyzer::AcceptanceAnalyzer(const edm::ParameterSet& iConfig) :
 
    tree->Branch("nTau",&nTau);
    tree->Branch("nJets",&nJets);
+   tree->Branch("nMuTau",&nMuTau);
+   tree->Branch("nETau",&nETau);
+   tree->Branch("nHTau",&nHTau);
+   tree->Branch("nEMu",&nEMu);
 
    /*
    genMass = -9.0;
@@ -336,6 +344,10 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
     edm::Handle<LHEEventProduct> lheProd;   
     iEvent.getByToken(lheToken_, lheProd);
 
+    //edm::Handle<std::vector<reco::Jet> > jetHandle;
+    //iEvent.getByToken(jetsAK4Label_, jetHandle);
+
+
    genMass = -9.0;
    ETauPass = -9.0;
    MuTauPass = -9.0;
@@ -364,6 +376,7 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
    tauPhi3= -9.0;
    d_phi= -9.0;
    d_eta= -9.0;
+   deltaR_inc = 0.0;
    deltaR_et = -9.0;
    deltaR_mt = -9.0; 
    deltaR_tt = -9.0;
@@ -402,7 +415,11 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
    higgsPt_em_1 = -9.0;
    higgsPt_em_2 = -9.0;
    higgsPt_em_3 = -9.0;
-   nTau = -9.0;
+   nTau = 0.0;
+   nHTau = -9.0;
+   nMuTau = -9.0;
+   nETau = -9.0;
+   nEMu = -9.0;
    hTau_1= -9.0;
    hTau_2= -9.0;
    nJets = -9.0;
@@ -415,39 +432,6 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
 
  
     iEvent.getByToken(htxsToken_,htxs);
-    if (htxs.isValid())
-      {
-       //std::cout << "Rivet info higgs pt " << htxs->higgs.pt() << std::endl;
-	//nJets = htxs->jets25;
-	higgsPt = htxs->higgs.pt();
-	if (ETauPass ==1){
-	  higgsPt_et = htxs->higgs.pt();
-	  if(htxs->higgs.pt() > 150) { higgsPt_et_1 = htxs->higgs.pt(); }
-          if(htxs->higgs.pt() > 200) { higgsPt_et_2 = htxs->higgs.pt(); }
-          if(htxs->higgs.pt() > 250) { higgsPt_et_3 = htxs->higgs.pt(); }
-	}
-        if (MuTauPass ==1){
-          higgsPt_mt = htxs->higgs.pt();
-	  if(htxs->higgs.pt() > 150) { higgsPt_mt_1 = htxs->higgs.pt(); }
-          if(htxs->higgs.pt() > 200) { higgsPt_mt_2 = htxs->higgs.pt(); }
-          if(htxs->higgs.pt() > 250) { higgsPt_mt_3 = htxs->higgs.pt(); }
-	}
-        if (TauTauPass ==1){
-          higgsPt_tt = htxs->higgs.pt();
-          if(htxs->higgs.pt() > 150) { higgsPt_tt_1 = htxs->higgs.pt(); }
-          if(htxs->higgs.pt() > 200) { higgsPt_tt_2 = htxs->higgs.pt(); }
-          if(htxs->higgs.pt() > 250) { higgsPt_tt_3 = htxs->higgs.pt(); }
-        }
-        if (EMuPass ==1){
-          higgsPt_em = htxs->higgs.pt();
-          if(htxs->higgs.pt() > 150) { higgsPt_em_1 = htxs->higgs.pt(); }
-          if(htxs->higgs.pt() > 200) { higgsPt_em_2 = htxs->higgs.pt(); }
-          if(htxs->higgs.pt() > 250) { higgsPt_em_3 = htxs->higgs.pt(); }
-
-        }
-
-      }
-
 
     // Get the number of true events
     // This is used later for pile up reweighting
@@ -589,6 +573,40 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
 	genMass = diLep.M();
 	
       }
+
+    if (htxs.isValid())
+      {
+       //std::cout << "Rivet info higgs pt " << htxs->higgs.pt() << std::endl;
+	//nJets = htxs->jets25;
+	higgsPt = htxs->higgs.pt();
+	if (ETauPass ==1){
+	  higgsPt_et = htxs->higgs.pt();
+	  if(htxs->higgs.pt() > 150) { higgsPt_et_1 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 200) { higgsPt_et_2 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 250) { higgsPt_et_3 = htxs->higgs.pt(); }
+	}
+        if (MuTauPass ==1){
+          higgsPt_mt = htxs->higgs.pt();
+	  if(htxs->higgs.pt() > 150) { higgsPt_mt_1 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 200) { higgsPt_mt_2 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 250) { higgsPt_mt_3 = htxs->higgs.pt(); }
+	}
+        if (TauTauPass ==1){
+          higgsPt_tt = htxs->higgs.pt();
+          if(htxs->higgs.pt() > 150) { higgsPt_tt_1 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 200) { higgsPt_tt_2 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 250) { higgsPt_tt_3 = htxs->higgs.pt(); }
+        }
+        if (EMuPass ==1){
+          higgsPt_em = htxs->higgs.pt();
+          if(htxs->higgs.pt() > 150) { higgsPt_em_1 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 200) { higgsPt_em_2 = htxs->higgs.pt(); }
+          if(htxs->higgs.pt() > 250) { higgsPt_em_3 = htxs->higgs.pt(); }
+        }
+      }
+
+
+
     std::vector<float> DeltaR1;
     std::vector<float> DeltaR2;
     std::vector<float> DeltaR3;
@@ -635,9 +653,11 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
       if (DeltaR4.at(0) < 1.0){  deltaR_em_2=DeltaR4.at(0);  }
       if (DeltaR4.at(0) < 0.5){  deltaR_em_3=DeltaR4.at(0);  }
     }
-
     std::vector< float > tauCand;
-    nTau =  hTaus->size();
+    nHTau =  hTaus->size();
+    nMuTau = mTaus->size();
+    nETau = eTaus->size();
+    //nEMu =  #####
     //    tauCand.push_back(nTau);
 
     float  hTau_1_eta=0;
@@ -676,9 +696,30 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
       if (DeltaR3.at(0) < 0.1){  deltaR_tt_3=DeltaR3.at(0);  }
     }
 
-    
+    if (DeltaR1.size() >0 ) deltaR_inc += DeltaR1.at(0);
+    if (DeltaR2.size() >0 ) deltaR_inc += DeltaR2.at(0);
+    if (DeltaR3.size() >0 ) deltaR_inc += DeltaR3.at(0);
+    if (DeltaR4.size() >0 ) deltaR_inc += DeltaR4.at(0);
+    //deltaR_inc = deltaR_tt+deltaR_et+deltaR_mt+deltaR_em;
     //LogInfo("Demo") << "number of gen taus "<<nGenTaus;
     //std::cout << genTaus << std::endl;
+
+    if (htxs.isValid())
+      {
+	{
+	  nJets = htxs->jets25.size();
+	}
+      }
+    
+
+
+
+
+
+
+
+
+
 
     tree->Fill();
 
