@@ -127,8 +127,10 @@ private:
   Int_t nMuTau, nETau, nHTau, nEMu;
   Int_t hTau_1;
   Int_t hTau_2;
-  Int_t nJets;
-  
+  Int_t nJets, nJets30;
+
+  float JetPt;
+  TLorentzVector jet_info;
 };
 
 //
@@ -230,6 +232,9 @@ AcceptanceAnalyzer::AcceptanceAnalyzer(const edm::ParameterSet& iConfig) :
 
    tree->Branch("nTau",&nTau);
    tree->Branch("nJets",&nJets);
+   tree->Branch("nJets30",&nJets30);
+   tree->Branch("JetPt",&JetPt,"JetPt/F");
+
    tree->Branch("nMuTau",&nMuTau);
    tree->Branch("nETau",&nETau);
    tree->Branch("nHTau",&nHTau);
@@ -423,7 +428,8 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
    hTau_1= -9.0;
    hTau_2= -9.0;
    nJets = -9.0;
-
+   JetPt = -9.0;
+   nJets30 = -9.0;
 
     //std::cout << iEvent.eventAuxiliary().event() << std::endl;
     run = iEvent.eventAuxiliary().run();
@@ -708,6 +714,9 @@ AcceptanceAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSe
       {
 	{
 	  nJets = htxs->jets25.size();
+	  nJets30 = htxs->jets30.size();
+	  //TMath::LorentzVector Jet = htxs->jets25;
+	  //JetPt = Jet.Px();
 	}
       }
     

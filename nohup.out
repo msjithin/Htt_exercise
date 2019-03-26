@@ -1,0 +1,142 @@
+19-Mar-2019 12:09:42 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/763A7921-EF20-E911-BD8B-44A842CF05B2.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 12:09:44 CDT pre-events
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 12:09:46 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/763A7921-EF20-E911-BD8B-44A842CF05B2.root
+%MSG-w LogicError:  HTXSRivetProducer:rivetProducerHTXS@beginRun  19-Mar-2019 12:09:48 CDT Run: 1
+::getByLabel: An attempt was made to read a Run product before endRun() was called.
+The product is of type 'LHERunInfoProduct'.
+The specified ModuleLabel was 'externalLHEProducer'.
+The specified productInstanceName was ''.
+
+%MSG
+Begin processing the 1st record. Run 1, Event 11, LumiSection 1 at 19-Mar-2019 12:09:48.921 CDT
+Rivet.Analysis.Handler: WARN  Analysis 'HiggsTemplateCrossSections' is unvalidated: be careful, it may be broken!
+==============================================================
+========     HiggsTemplateCrossSections Initialization     =========
+==============================================================
+==============================================================
+========             Higgs prod mode 1              =========
+========          Sucessful Initialization           =========
+==============================================================
+19-Mar-2019 12:19:35 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/763A7921-EF20-E911-BD8B-44A842CF05B2.root
+19-Mar-2019 12:19:35 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/C46A701F-EF20-E911-A144-44A842CFD5F2.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 12:19:37 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 12:19:37 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/C46A701F-EF20-E911-A144-44A842CFD5F2.root
+Begin processing the 100001st record. Run 1, Event 68484, LumiSection 73 at 19-Mar-2019 12:20:17.978 CDT
+19-Mar-2019 12:26:36 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/C46A701F-EF20-E911-A144-44A842CFD5F2.root
+19-Mar-2019 12:26:37 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/EE5A0F69-0521-E911-86C3-44A842CFD626.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 12:26:48 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 12:26:48 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/EE5A0F69-0521-E911-86C3-44A842CFD626.root
+Begin processing the 200001st record. Run 1, Event 1105698, LumiSection 1179 at 19-Mar-2019 12:29:59.501 CDT
+19-Mar-2019 12:35:53 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/EE5A0F69-0521-E911-86C3-44A842CFD626.root
+19-Mar-2019 12:35:53 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/60B64277-0521-E911-9706-B499BAAC0A22.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 12:35:55 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 12:35:55 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/60B64277-0521-E911-9706-B499BAAC0A22.root
+Begin processing the 300001st record. Run 1, Event 1268259, LumiSection 1352 at 19-Mar-2019 12:40:04.977 CDT
+19-Mar-2019 12:44:52 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/60B64277-0521-E911-9706-B499BAAC0A22.root
+19-Mar-2019 12:44:52 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/70B2A1A3-0E21-E911-B957-44A842CFD5CB.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 12:44:55 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 12:44:55 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/70B2A1A3-0E21-E911-B957-44A842CFD5CB.root
+Begin processing the 400001st record. Run 1, Event 738238, LumiSection 787 at 19-Mar-2019 12:50:02.625 CDT
+19-Mar-2019 12:54:20 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/70B2A1A3-0E21-E911-B957-44A842CFD5CB.root
+19-Mar-2019 12:54:20 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/280C50A7-0E21-E911-A214-484D7E8DF085.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 12:54:23 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 12:54:24 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/280C50A7-0E21-E911-A214-484D7E8DF085.root
+Begin processing the 500001st record. Run 1, Event 422872, LumiSection 451 at 19-Mar-2019 12:59:21.513 CDT
+19-Mar-2019 13:01:01 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/280C50A7-0E21-E911-A214-484D7E8DF085.root
+19-Mar-2019 13:01:01 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/20301EA9-0E21-E911-93F9-44A842CFD64D.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 13:01:03 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 13:01:03 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/20301EA9-0E21-E911-93F9-44A842CFD64D.root
+Begin processing the 600001st record. Run 1, Event 2214713, LumiSection 2361 at 19-Mar-2019 13:09:31.897 CDT
+19-Mar-2019 13:10:35 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/20301EA9-0E21-E911-93F9-44A842CFD64D.root
+19-Mar-2019 13:10:35 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/82DCC89F-1321-E911-83E9-44A842CFD64D.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 13:10:37 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 13:10:38 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/82DCC89F-1321-E911-83E9-44A842CFD64D.root
+19-Mar-2019 13:18:25 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/82DCC89F-1321-E911-83E9-44A842CFD64D.root
+19-Mar-2019 13:18:25 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/0604D195-1421-E911-A3BD-6C3BE5B59210.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 13:18:27 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 13:18:27 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/0604D195-1421-E911-A3BD-6C3BE5B59210.root
+Begin processing the 700001st record. Run 1, Event 605814, LumiSection 646 at 19-Mar-2019 13:20:06.069 CDT
+19-Mar-2019 13:24:54 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/0604D195-1421-E911-A3BD-6C3BE5B59210.root
+19-Mar-2019 13:24:54 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/46CE51F5-1A21-E911-BC47-44A842CFD64D.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 13:24:56 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 13:24:56 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/46CE51F5-1A21-E911-BC47-44A842CFD64D.root
+Begin processing the 800001st record. Run 1, Event 662854, LumiSection 707 at 19-Mar-2019 13:29:16.855 CDT
+19-Mar-2019 13:31:29 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/46CE51F5-1A21-E911-BC47-44A842CFD64D.root
+19-Mar-2019 13:31:29 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/D4018420-1A21-E911-9C8B-6C3BE5B59210.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 13:32:00 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site fnal.gov
+%MSG
+19-Mar-2019 13:32:00 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/D4018420-1A21-E911-9C8B-6C3BE5B59210.root
+19-Mar-2019 13:38:34 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/D4018420-1A21-E911-9C8B-6C3BE5B59210.root
+19-Mar-2019 13:38:34 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/D24C64BB-2321-E911-949A-6C3BE5B5A038.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 13:38:37 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 13:38:37 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/D24C64BB-2321-E911-949A-6C3BE5B5A038.root
+Begin processing the 900001st record. Run 1, Event 140298, LumiSection 150 at 19-Mar-2019 13:39:12.976 CDT
+19-Mar-2019 13:45:41 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/D24C64BB-2321-E911-949A-6C3BE5B5A038.root
+19-Mar-2019 13:45:41 CDT  Initiating request to open file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/A0BAD3A1-2321-E911-AABD-B499BAAC04E6.root
+%MSG-w XrdAdaptor:  file_open 19-Mar-2019 13:45:43 CDT PostProcessEvent
+Data is served from T2_US_Purdue instead of original site US-Regional-Nebraska
+%MSG
+19-Mar-2019 13:45:44 CDT  Successfully opened file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/A0BAD3A1-2321-E911-AABD-B499BAAC04E6.root
+Rivet.Analysis.HiggsTemplateCrossSections: INFO   ====================================================== 
+Rivet.Analysis.HiggsTemplateCrossSections: INFO        Higgs Template X-Sec Categorization Tool          
+Rivet.Analysis.HiggsTemplateCrossSections: INFO                  Status Code Summary                     
+Rivet.Analysis.HiggsTemplateCrossSections: INFO   ====================================================== 
+Rivet.Analysis.HiggsTemplateCrossSections: INFO       >>>> 1000000 events successfully categorized
+Rivet.Analysis.HiggsTemplateCrossSections: INFO       >>>> --> the following errors occured:
+Rivet.Analysis.HiggsTemplateCrossSections: INFO       >>>> 0 had an undefined Higgs production mode.
+Rivet.Analysis.HiggsTemplateCrossSections: INFO       >>>> 0 failed momentum conservation.
+Rivet.Analysis.HiggsTemplateCrossSections: INFO       >>>> 0 failed to identify a valid Higgs boson.
+Rivet.Analysis.HiggsTemplateCrossSections: INFO       >>>> 0 failed to identify the hard scatter vertex.
+Rivet.Analysis.HiggsTemplateCrossSections: INFO       >>>> 0 VH: to identify a valid V-boson.
+Rivet.Analysis.HiggsTemplateCrossSections: INFO       >>>> 0 failed to identify valid Ws from top decay.
+Rivet.Analysis.HiggsTemplateCrossSections: INFO   ====================================================== 
+Rivet.Analysis.HiggsTemplateCrossSections: INFO   ====================================================== 
+19-Mar-2019 13:49:19 CDT  Closed file file:root://cmsxrootd.fnal.gov//store/mc/RunIIFall17MiniAODv2/GluGluHToTauTau_M125_13TeV_powheg_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/10000/A0BAD3A1-2321-E911-AABD-B499BAAC04E6.root
+
+=============================================
+
+MessageLogger Summary
+
+ type     category        sev    module        subroutine        count    total
+ ---- -------------------- -- ---------------- ----------------  -----    -----
+    1 LogicError           -w HTXSRivetProduce                       1        1
+    2 XrdAdaptor           -w file_open                             13       13
+    3 fileAction           -s file_close                            13       13
+    4 fileAction           -s file_open                             26       26
+
+ type    category    Examples: run/evt        run/evt          run/evt
+ ---- -------------------- ---------------- ---------------- ----------------
+    1 LogicError           Run: 1                            
+    2 XrdAdaptor           pre-events       PostProcessEvent PostProcessEvent
+    3 fileAction           PostProcessEvent PostProcessEvent PostGlobalEndRun
+    4 fileAction           pre-events       pre-events       PostProcessEvent
+
+Severity    # Occurrences   Total Occurrences
+--------    -------------   -----------------
+Warning                14                  14
+System                 39                  39
+
+dropped waiting message count 0
