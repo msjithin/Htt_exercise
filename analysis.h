@@ -207,6 +207,9 @@ public :
    virtual void     Loop(Long64_t maxEvents, int reportEvery, string SampleName);
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
+   virtual void BookHistos(const char* file2);
+
+
 };
 
 #endif
@@ -230,12 +233,12 @@ analysis::analysis(const char* file1, const char* file2)
     {
       //if(fileNumber > 1)
 	{
-	  TString dataset = "ttree_";
+	  TString dataset = "ttree";
 	  TString  FullPathInputFile = (path+filename->GetName());
 	  TString name = filename->GetName();
 	  if(name.Contains(dataset))
 	    {
-	      //std::cout<<"FullPathInputFile:"<<FullPathInputFile<<std::endl;
+	      std::cout<<"FullPathInputFile:"<<FullPathInputFile<<std::endl;
 	      chain->Add(FullPathInputFile);
 	    }
 	}
@@ -245,7 +248,8 @@ analysis::analysis(const char* file1, const char* file2)
   std::cout<<"All files added."<<std::endl; 
   std::cout<<"Initializing chain."<<std::endl;
   Init(chain);
-  std::cout<<"Line 248 in .h file"<<std::endl;
+  BookHistos(file2);
+  std::cout<<"Output written to "<< TString(file2) <<std::endl;
 
 }
 

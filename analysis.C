@@ -77,24 +77,36 @@ void analysis::Loop(Long64_t maxEvents, int reportEvery, string SampleName)
    Long64_t nentries = fChain->GetEntries();
    std::cout<<"Coming in: "<<std::endl;
    std::cout<<"nentries:"<<nentries<<std::endl;
-   std::cout<< "This works Line 80 in .c file" << endl;
+   //std::cout<< "This works Line 80 in .c file" << endl;
    Long64_t nbytes = 0, nb = 0;
    Long64_t nentriesToCheck = nentries;
    if (maxEvents != -1LL && nentries > maxEvents)
      nentriesToCheck = maxEvents;
-   std::cout<< "This works Line 85 in .c file" << endl;
+   //std::cout<< "This works Line 85 in .c file" << endl;
    for (Long64_t jentry=0; jentry<nentriesToCheck;jentry++) {
+     // std::cout<< "This works Line 87 in .c file" << endl;
+     
       Long64_t ientry = LoadTree(jentry);
-      std::cout<< "This works Line 88 in .c file" << endl;
+      //std::cout<< "This works Line 90 in .c file" << endl;
 
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
-      // if (Cut(ientry) < 0) continue;
-      //h_higgsPt->Fill(higgsPt);
-      std::cout<< "This works Line 94 in .c file" << endl;
-
-      
+      //if (Cut(ientry) < 0) continue;
+      h_higgsPt->Fill(higgsPt);
+      //std::cout<< "This works Line 94 in .c file" << endl;
+      if (jentry%reportEvery == 0)
+	{
+	  std::cout<<"Finished entry "<<jentry<<"/"<<(nentriesToCheck-1)<<std::endl;
+	}
    }
+      
+}
+void analysis::BookHistos(const char* file2)
+{
+  fileName = new TFile(file2, "RECREATE");
+  //tree = new TTree("ADD","ADD");
+  //tree->Branch("event_","std::vector<unsigned int>",&event_);
+  //tree->Branch("event_info","std::vector<double>",&event_info);
+  fileName->cd();
 
-   
 }
