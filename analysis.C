@@ -1,3 +1,12 @@
+/// make ttree.root first 
+/// cmsRun GenAnalysis/python/ConfFile_cfg.py
+///
+/// execute this file using runAnalyzer.sh
+/// bash runAnalyzer.sh
+/// gStyle->SetPaintTextFormat("4.2f") for setting text format
+
+
+
 #define analysis_cxx
 #include "analysis.h"
 #include <TH2.h>
@@ -71,12 +80,27 @@ void analysis::Loop(Long64_t maxEvents, int reportEvery, string SampleName)
 //by  b_branchname->GetEntry(ientry); //read only this branch
    if (fChain == 0) return;
    TString sample = TString(SampleName);
-
-   TH1F *h_higgsPt = new TH1F("h_higgsPt", "Higgs Pt", 10, 0, 1000);
    
+   float dRbins[8]={0,0.5, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0};
+   float pTbins[9] = {0, 100,  200,  300, 500, 700, 900, 1100, 1300};
+   TH1F *hist_deltaR = new TH1F("hist_deltaR", "delta_R_binned", 7,dRbins);
+   TH1F *hist_higgsPt= new TH1F("hist_higgspt", "higgsPt_binned", 8,pTbins);
+   TH2F *hist_dr_Hpt = new TH2F ("dR_HiggsPt", "dR vs higgsPt", 8,pTbins,7,dRbins);
+   TH2F *hist_dr_Hpt_j1 = new TH2F ("dR_HiggsPt_1jet", "dR vs higgsPt , njets >=1", 8,pTbins,7,dRbins);
+   TH2F *hist_dr_Hpt_j2 = new TH2F ("dR_HiggsPt_2jet", "dR vs higgsPt , njets >=2", 8,pTbins,7,dRbins);
+   
+      
    Long64_t nentries = fChain->GetEntries();
    std::cout<<"Coming in: "<<std::endl;
    std::cout<<"nentries:"<<nentries<<std::endl;
+
+   float ngen = nentries;
+   float luminosity = 100000; // in pb-1  
+   float xs = 44.14*0.0627; 
+   float weight=luminosity*xs/ngen; // luminosity & xs weighting
+   //TH1F *h_higgsPt = new TH1F("h_higgsPt", "Higgs Pt", 10, 0, 1000);
+   std::cout<<"weight =  "<< weight<<std::endl;
+
    //std::cout<< "This works Line 80 in .c file" << endl;
    Long64_t nbytes = 0, nb = 0;
    Long64_t nentriesToCheck = nentries;
@@ -92,7 +116,21 @@ void analysis::Loop(Long64_t maxEvents, int reportEvery, string SampleName)
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
       //if (Cut(ientry) < 0) continue;
-      h_higgsPt->Fill(higgsPt);
+      if (deltaR_inc > 0)
+	{
+	  hist_higgsPt->Fill(higgsPt, weight);
+	  hist_deltaR->Fill(deltaR_inc, weight);
+	  hist_dr_Hpt->Fill(higgsPt, deltaR_inc, weight);
+	  if (nJets >= 1)
+	    {
+	      hist_dr_Hpt_j1->Fill(higgsPt, deltaR_inc, weight);
+	    }
+	  if (nJets >= 2)
+	    {
+	      hist_dr_Hpt_j2->Fill(higgsPt, deltaR_inc, weight);
+	    }
+	  
+	}
       //std::cout<< "This works Line 94 in .c file" << endl;
       if (jentry%reportEvery == 0)
 	{
@@ -100,6 +138,18 @@ void analysis::Loop(Long64_t maxEvents, int reportEvery, string SampleName)
 	}
    }
       
+   hist_deltaR->GetXaxis()->SetTitle("delta R");
+   hist_higgsPt->GetXaxis()->SetTitle("Higgs pt [GeV]");
+   hist_dr_Hpt->GetXaxis()->SetTitle("Higgs pt [GeV]");
+   hist_dr_Hpt->GetYaxis()->SetTitle("delta R");
+ 
+   hist_dr_Hpt_j1->GetXaxis()->SetTitle("Higgs pt [GeV]");
+   hist_dr_Hpt_j1->GetYaxis()->SetTitle("delta R");
+   
+   hist_dr_Hpt_j2->GetXaxis()->SetTitle("Higgs pt [GeV]");
+   hist_dr_Hpt_j2->GetYaxis()->SetTitle("delta R");   
+
+
 }
 void analysis::BookHistos(const char* file2)
 {
